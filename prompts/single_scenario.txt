@@ -1,0 +1,1 @@
+Generate the Scenic programs for scenarios/conflict_TIPOD/input.txt. Use the skill $conflict-cases-to-scenic. The default map path is '../../../maps/Town05.xodr'. Just follow the skill and output the Scenic programs. Do not perform any extra checks, simulations, etc.
