@@ -2,8 +2,9 @@
 
 Converting Waymo's conflict cases to Scenic programs.
 
-## Project Checklist
+## Project checklist
 
+This project is a work in progress. The following items are planned:
 - [ ] Add conflict cases involving pedestrians and cyclists.
 - [ ] Introduce automatic selection of maps.
 - [ ] Integrate MPCC controllers.
