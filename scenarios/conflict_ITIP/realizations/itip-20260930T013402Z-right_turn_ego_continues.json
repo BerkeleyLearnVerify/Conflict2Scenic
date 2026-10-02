@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "passing_intersection"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "right_turn",
+      "position": "lateral_lane_at_intersection",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "yes",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Agent1 initiates the conflict by turning right from a lateral approach into ego's onward lane. Ego responds by continuing straight under its trajectory controller; a slower turner creates the conflict opportunity. The turn destination is required to match ego's straight destination lane."
+}

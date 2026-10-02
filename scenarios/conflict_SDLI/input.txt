@@ -1,0 +1,16 @@
+{
+  "conflict_group": {
+    "title": "same-direction-lateral-incursion",
+    "property": "Occurs when two roadway actors are traveling in the same trafficway but in initially different travel lanes at the time of the initial interaction due to lateral incursion by some actor."
+  },
+  "conflict_partners": {
+    "ego": {
+      "type": "car",
+      "role": "responder"
+    },
+    "agent1": {
+      "type": "car",
+      "role": "initiator"
+    }
+  }
+}

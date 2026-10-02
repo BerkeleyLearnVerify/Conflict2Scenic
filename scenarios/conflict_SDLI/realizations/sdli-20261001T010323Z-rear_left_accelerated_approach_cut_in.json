@@ -1,0 +1,16 @@
+{
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "lane_change_right",
+      "position": "left_behind_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "yes",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego is a car responder; agent1 is a car initiator; interaction begins in different same-direction lanes in the same trafficway. Chosen assumptions: Agent1 approaches faster from behind in the left lane and then changes right toward ego's lane; ego maintains its lane-following controller. The higher target speed is the chosen approach policy, not an additional partner. Initial longitudinal distance or offset is (8, 12) m; ego target speed is (8, 10) m/s; agent1 target speed is (13, 15) m/s. Agent1 follows for 2 s before initiating its lane change when the target lane has no object within a sampled 1\u20132 m clearance threshold. Normal FollowLaneBehavior controller. Outcome intent: a conflict opportunity; collision is not required. No fixed simulation horizon is specified."
+}

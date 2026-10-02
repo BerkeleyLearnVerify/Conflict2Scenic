@@ -1,0 +1,16 @@
+{
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "accelerating",
+      "position": "in_front_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "yes",
+    "right_lane_exists": "no"
+  },
+  "comments": "Chosen assumptions: agent1 starts 50\u201365 m ahead in ego\u2019s lane, faces opposite the lane direction, and accelerates straight into an opposing approach. Ego travels in the intended direction using its lane-following controller. Agent1 is the wrong-way initiator; ego is the exposed responder. Speeds are 7\u201310 m/s for ego and 6\u20139 m/s initially for agent1; agent1 throttle is 0.15\u20130.25. Conflict opportunity, without a required collision."
+}

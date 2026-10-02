@@ -1,0 +1,20 @@
+{
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "lane_change_right",
+      "position": "left_front_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "yes",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego is a car responder; agent1 is a car initiator; interaction begins in different same-direction lanes in the same trafficway. Chosen assumptions: Agent1 enters ego's lane from ahead on the left at a lower speed; ego brakes when the separation falls below its response threshold. Initial longitudinal distance or offset is (9, 13) m; ego target speed is (12, 14) m/s; agent1 target speed is (8, 10) m/s. Agent1 follows for 1 s before initiating its lane change when the target lane has no object within a sampled 1\u20132 m clearance threshold. Ego response threshold is 7\u20139 m for the leading incursion or 3.6\u20134.2 m for the abreast incursion; brake input is 0.65\u20130.9. Outcome intent: a conflict opportunity; collision is not required. No fixed simulation horizon is specified. Ego enables its explicit response after 2 s, one second after agent1 becomes eligible to initiate the incursion; it then responds when its proximity trigger is met.",
+  "ego": {
+    "type": "car",
+    "maneuver": "braking"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "accelerating",
+      "position": "in_front_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "yes",
+    "right_lane_exists": "no"
+  },
+  "comments": "Chosen assumptions: agent1 accelerates straight the wrong way from 50\u201365 m ahead in ego\u2019s lane. Ego initially follows the intended direction and applies sustained braking when separation drops below 32\u201338 m. Ego brake control is 0.65\u20130.85. Agent1 initiates the wrong-way encounter; ego responds by braking. Conflict opportunity, without a required collision.",
+  "ego": {
+    "type": "car",
+    "maneuver": "braking"
+  }
+}

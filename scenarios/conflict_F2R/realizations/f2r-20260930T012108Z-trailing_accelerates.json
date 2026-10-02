@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "accelerating"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "accelerating",
+      "position": "behind_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input: ego is the car responder and agent1 is the car initiator in the same direction and lane. Chosen realization: agent1 closes from behind by accelerating after a short cruise; ego accelerates when the gap becomes short. No collision is required."
+}

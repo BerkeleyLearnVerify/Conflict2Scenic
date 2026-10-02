@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "braking"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "left_turn",
+      "position": "lateral_lane_at_intersection",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "yes",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Agent1 initiates by turning left across the intersection into ego's onward lane. Ego proceeds straight until the turner is close, then brakes. The turn destination is required to match ego's straight destination lane."
+}

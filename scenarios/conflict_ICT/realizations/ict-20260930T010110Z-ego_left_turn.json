@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "left_turn"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "passing_intersection",
+      "position": "oncoming_lane",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "yes",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "At a four-way intersection, initiator agent1 enters straight from the oncoming approach while responder ego turns left across its path. Ego brakes when the oncoming car comes close. Lane adjacency is not needed."
+}

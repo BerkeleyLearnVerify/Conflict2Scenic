@@ -1,0 +1,16 @@
+{
+  "conflict_group": {
+    "title": "front-to-rear",
+    "property": "Involves one road user interacting with another road user in the same direction and same travel lane."
+  },
+  "conflict_partners": {
+    "ego": {
+      "type": "car",
+      "role": "responder"
+    },
+    "agent1": {
+      "type": "car",
+      "role": "initiator"
+    }
+  }
+}

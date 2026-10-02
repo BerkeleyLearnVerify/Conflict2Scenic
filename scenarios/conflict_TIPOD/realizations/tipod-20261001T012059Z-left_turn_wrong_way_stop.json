@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "stopping"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "left_turn",
+      "position": "lateral_lane_at_intersection",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "yes",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego is the car responder; agent1 is the car initiator; the group requires a turn between trafficways with one actor operating against intended travel. Chosen assumptions: Agent1 initiates a left turn into a different trafficway. Ego initially travels against the receiving lane direction, then stops when the turning initiator comes within its stopping threshold, leaving an obstruction in the turn exit. A four-way intersection is used. Agent1 starts on an incoming lane and follows its chosen turn into ego's lane; ego is already on that turn's end lane. The lateral position is resolved using the chosen turn rather than a straight crossing. No adjacent lane is needed; no denotes no required adjacent lane. Initial separation is 12-35 m. Ego starts at 5-8 m/s; agent1 targets 5-7 m/s. Proximity response thresholds, when used, are 10-16 m. Conflict opportunity is intended; a collision is not required."
+}

@@ -1,0 +1,16 @@
+{
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "stopping",
+      "position": "in_front_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "yes",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input: ego is the car responder and agent1 is the car initiator in the same direction and lane. Chosen realization: agent1 abruptly stops while the pair approaches a four-way intersection; ego continues following its lane, creating a closing conflict. No collision is required."
+}

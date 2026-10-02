@@ -1,0 +1,16 @@
+{
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "accelerating",
+      "position": "left_front_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "yes",
+    "right_lane_exists": "no"
+  },
+  "comments": "Chosen assumptions: agent1 starts 30\u201340 m ahead in the adjacent left lane of the same intended-direction lane group, but faces opposite that lane\u2019s intended direction and accelerates straight. Ego follows its own lane in the intended direction. Agent1 initiates a close opposite-direction lateral pass; ego responds with lane following. The supplied property does not require lane crossing or collision, so the partners remain in adjacent lanes. Ego speed is 7\u201310 m/s, agent1 initial speed 6\u20139 m/s, and throttle 0.15\u20130.25."
+}

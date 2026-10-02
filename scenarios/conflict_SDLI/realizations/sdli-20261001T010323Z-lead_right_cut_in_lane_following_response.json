@@ -1,0 +1,16 @@
+{
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "lane_change_left",
+      "position": "right_front_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "no",
+    "right_lane_exists": "yes"
+  },
+  "comments": "Input facts: ego is a car responder; agent1 is a car initiator; interaction begins in different same-direction lanes in the same trafficway. Chosen assumptions: Agent1 cuts in from the right ahead of ego; ego continues with its normal lane-following controller and no explicit emergency maneuver. Initial longitudinal distance or offset is (8, 12) m; ego target speed is (10, 12) m/s; agent1 target speed is (7, 9) m/s. Agent1 follows for 1 s before initiating its lane change when the target lane has no object within a sampled 1\u20132 m clearance threshold. Normal FollowLaneBehavior controller. Outcome intent: a conflict opportunity; collision is not required. No fixed simulation horizon is specified."
+}

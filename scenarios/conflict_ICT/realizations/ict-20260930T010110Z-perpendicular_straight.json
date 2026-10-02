@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "passing_intersection"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "passing_intersection",
+      "position": "lateral_lane_at_intersection",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "yes",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "At a four-way intersection, initiator agent1 enters straight from a conflicting lateral approach while responder ego proceeds straight and brakes when another actor comes close. Their straight paths cross. Lane adjacency is not needed."
+}
