@@ -1,0 +1,16 @@
+{
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "reversing",
+      "position": "behind_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego is the car responder, agent1 is the initiator, and a reversing road user is required. The allowed car type is selected for agent1. Assumptions: agent1 starts stationary 12-16 m behind ego, faces 180 degrees opposite the lane direction, and therefore reverses toward ego along the direction of traffic with throttle 0.2-0.3. Ego follows the lane at 1-2 m/s without an explicit evasive response. Both initially share an approximately straight lane. Reversing from behind creates a different closing approach from lead-vehicle backing. Collision is not required."
+}

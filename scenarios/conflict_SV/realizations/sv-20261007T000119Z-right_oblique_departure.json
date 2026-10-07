@@ -1,0 +1,13 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "accelerating"
+  },
+  "agents": {},
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego is the sole car and initiator; off-trafficway interaction is permitted. Chosen assumptions: ego starts on the lane centerline with its heading 15-25 degrees to the right of the lane direction, representing an existing steering error. It continues under throttle without correcting that heading. The projected point 18-24 m ahead along that heading is outside the road. Initial speed is 7-9 m/s and throttle is 0.15-0.30, held continuously. No other actors or response policy are introduced; adjacent lanes are not necessary. Outcome intent is lateral road departure rather than a mandated collision."
+}

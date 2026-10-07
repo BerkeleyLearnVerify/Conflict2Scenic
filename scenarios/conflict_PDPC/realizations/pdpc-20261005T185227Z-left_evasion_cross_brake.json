@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "braking"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "lane_change_left",
+      "position": "lateral_lane_at_intersection",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "yes",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego is the car responder; agent1 is the car initiator; the actors interact on crossing roadways after a prior lateral evasive action. Chosen assumptions: agent1 approaches a four-way intersection on a lateral incoming lane, performs an evasive lane change left, and then enters a straight crossing trajectory. Ego brakes when agent1 has left its original lane and comes within the response distance. The evasive action is a chosen prior circumstance; no third actor or prior collision is assumed. Speeds are in m/s, distances in m, preparation is 2 s. Lane changes use the normal controller; the programs allow a conflict opportunity without requiring a collision."
+}

@@ -48,8 +48,8 @@ The fields are:
 
 - `agents`: all non-ego agents in the realization. Preserve their IDs from `conflict_partners`. Each agent has:
   - `type`: `car`, `pedestrian`, or `cyclist`.
-  - `maneuver`: `follow_lane`, `lane_change_left`, `lane_change_right`, `left_turn`, `right_turn`, `passing_intersection`, `braking`, `accelerating`, `stopping`, `walking`, `crossing`, or `standing`. `walking`, `crossing`, and `standing` apply only to pedestrians; the other maneuvers apply to cars and cyclists.
-  - `position`: `in_front_of_ego`, `behind_ego`, `left_front_of_ego`, `left_of_ego`, `left_behind_of_ego`, `right_front_of_ego`, `right_of_ego`, `right_behind_of_ego`, `lateral_lane_at_intersection`, or `oncoming_lane`.
+  - `maneuver`: `follow_lane`, `lane_change_left`, `lane_change_right`, `left_turn`, `right_turn`, `passing_intersection`, `braking`, `accelerating`, `stopping`, `reversing`, `crossing`, or `standing`. `crossing`, and `standing` apply only to pedestrians; the other maneuvers apply to cars and cyclists.
+  - `position`: `in_front_of_ego`, `behind_ego`, `left_front_of_ego`, `left_of_ego`, `left_behind_of_ego`, `right_front_of_ego`, `right_of_ego`, `right_behind_of_ego`, `lateral_lane_at_intersection`, or `oncoming_lane`. For `pedestrians`, use all except `lateral_lane_at_intersection` and `oncoming_lane`.
   - `order`: a positive integer ranking agents that share a position. Order 1 is nearest to ego, order 2 is next, and so on. Use 1 when the position is unique.
 - `road`: road conditions relative to ego. `intersection`, `left_lane_exists`, and `right_lane_exists` each use `yes` or `no`.
 - `comments`: optional assumptions or causal notes. Do not place required geometry or behavior only in this field; generation is driven by the structured fields.

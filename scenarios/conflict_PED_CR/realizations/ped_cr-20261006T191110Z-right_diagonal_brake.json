@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "braking"
+  },
+  "agents": {
+    "agent1": {
+      "type": "pedestrian",
+      "maneuver": "crossing",
+      "position": "right_front_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego is the car responder; agent1 is the pedestrian initiator; one actor travels along the trafficway and the other crosses it without traveling along or onto another trafficway. Chosen assumptions: agent1 initiates a diagonal crossing from the right toward the left and 5 m upstream toward the approaching ego, without joining another trafficway. Ego follows its lane and brakes when agent1 is within 12\u201315 m. Initial longitudinal separation is 22\u201328 m; right lateral offset is 4\u20135 m; pedestrian speed is 1.5\u20131.9 m/s; ego target speed is 7\u20139 m/s. No collision outcome is required. Adjacent lanes are not needed; the road fields do not forbid them."
+}

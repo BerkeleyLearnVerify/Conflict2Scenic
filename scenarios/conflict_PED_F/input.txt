@@ -1,0 +1,16 @@
+{
+  "conflict_group": {
+    "title": "pedestrian-forward",
+    "property": "Involves vehicles traveling forward and interacting with a non-road-user conflict partner within the trafficway that either moves parallel to the roadway or remains stationary without attempting to cross."
+  },
+  "conflict_partners": {
+    "ego": {
+      "type": "car",
+      "role": "responder"
+    },
+    "agent1": {
+      "type": "pedestrian",
+      "role": "initiator"
+    }
+  }
+}

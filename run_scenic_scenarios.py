@@ -62,7 +62,11 @@ def recorded_polygon_program(file_path):
                 f"record {agent}._boundingPolygon as {agent_polygon_id}"
             )
         if lane_polygon_id not in existing_record_ids:
-            extra_lines.append(f"record {agent}.lane.polygon as {lane_polygon_id}")
+            # Crossing pedestrians may legitimately be outside every traffic lane.
+            extra_lines.append(
+                f"record ({agent}._lane.polygon if {agent}._lane is not None "
+                f"else None) as {lane_polygon_id}"
+            )
 
     suffix = "\n\n# Automatically added polygon records\n" + "\n".join(extra_lines) + "\n"
     temporary_path = None
@@ -181,11 +185,12 @@ def visualize_simulation(
             alpha = 0.5
 
         patch = Polygon(
-            list(poly.exterior.coords),
+            list(poly.exterior.coords) if poly is not None else [(0, 0)],
             closed=True,
             facecolor=facecolor,
             alpha=alpha,
             edgecolor="black",
+            visible=poly is not None,
         )
         ax.add_patch(patch)
         vehicle_patches[vid] = patch
@@ -204,8 +209,8 @@ def visualize_simulation(
             vehicle_labels[vid] = label
         else:
             vehicle_labels[vid] = ax.text(
-                poly.centroid.x,
-                poly.centroid.y,
+                poly.centroid.x if poly is not None else 0,
+                poly.centroid.y if poly is not None else 0,
                 "",
                 fontsize=10,
                 ha="center",
@@ -237,6 +242,11 @@ def visualize_simulation(
         for i, (vid, traj) in enumerate(trajectories.items()):
             if frame < len(traj):
                 poly: ShapelyPolygon = traj[frame][1]
+                vehicle_patches[vid].set_visible(poly is not None)
+                vehicle_labels[vid].set_visible(poly is not None)
+                if poly is None:
+                    artists.extend((vehicle_patches[vid], vehicle_labels[vid]))
+                    continue
                 # Update polygon
                 vehicle_patches[vid].set_xy(list(poly.exterior.coords))
                 artists.append(vehicle_patches[vid])
@@ -347,7 +357,7 @@ def main():
         args.scenario,
         save_path=args.save_path,
         max_steps=120,
-        seed=0,
+        seed=42,
     )
 
 

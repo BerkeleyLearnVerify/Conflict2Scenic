@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "lane_change_right"
+  },
+  "agents": {
+    "agent1": {
+      "type": "pedestrian",
+      "maneuver": "standing",
+      "position": "left_front_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "yes",
+    "right_lane_exists": "yes"
+  },
+  "comments": "Input facts: ego is the car responder; agent1 is the pedestrian initiator; the pedestrian remains within the trafficway, stationary or moving parallel without crossing. Chosen assumptions: The pedestrian initiates the conflict by remaining stationary within the trafficway, near the left side of ego lane. Ego responds by changing into a clear same-direction right lane. Distances are meters, speeds meters per second, reaction delay seconds, and brake/throttle controls dimensionless. The pedestrian conflict begins at time zero. These realizations create conflict opportunities; no collision outcome is imposed."
+}

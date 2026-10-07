@@ -1,0 +1,16 @@
+{
+  "conflict_group": {
+    "title": "same-direction-prior-circumstances",
+    "property": "Involves two roadway actors operating on the same trafficway in the same direction when one road user performs a lateral evasive action, experiences loss of control, or is involved in a prior collision that results in an interaction with the other road user."
+  },
+  "conflict_partners": {
+    "ego": {
+      "type": "car",
+      "role": "responder"
+    },
+    "agent1": {
+      "type": "car",
+      "role": "initiator"
+    }
+  }
+}

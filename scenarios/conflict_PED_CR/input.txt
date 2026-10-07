@@ -1,0 +1,16 @@
+{
+  "conflict_group": {
+    "title": "pedestrian-crossing-road",
+    "property": "Involves interactions between an actor moving along a trafficway and another actor crossing that trafficway (while not traveling along or onto another trafficway)."
+  },
+  "conflict_partners": {
+    "ego": {
+      "type": "car",
+      "role": "responder"
+    },
+    "agent1": {
+      "type": "pedestrian",
+      "role": "initiator"
+    }
+  }
+}

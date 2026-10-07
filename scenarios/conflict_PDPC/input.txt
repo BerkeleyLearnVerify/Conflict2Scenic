@@ -1,0 +1,16 @@
+{
+  "conflict_group": {
+    "title": "perpendicular-direction-prior-circumstances",
+    "property": "Occurs when two roadway actors operating on crossing roadways interact after at least one actor has performed a lateral evasive action, lost control, or experienced a prior collision."
+  },
+  "conflict_partners": {
+    "ego": {
+      "type": "car",
+      "role": "responder"
+    },
+    "agent1": {
+      "type": "car",
+      "role": "initiator"
+    }
+  }
+}

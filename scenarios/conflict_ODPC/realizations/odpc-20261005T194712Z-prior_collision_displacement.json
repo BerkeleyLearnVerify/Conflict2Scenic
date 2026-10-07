@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "stopping"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "left_turn",
+      "position": "oncoming_lane",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "yes",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Agent1 is the initiator and ego is the responder (input facts). Assumptions: opposing straight approaches at a four-way intersection; a prior collision immediately before the modeled episode has deflected agent1 left. Agent1 starts on its original incoming trafficway in its original direction of travel and immediately follows a conflicting left-turn connector as a kinematic post-impact displacement surrogate. The prior impact and an additional collision partner are not modeled. Ego follows its straight trajectory and commands a stop when agent1 enters a 16\u201320 m safety radius. Approach speeds are 7\u20139 m/s, initial partner separation 22\u201348 m. Opportunity for conflict is intended; collision is not required."
+}

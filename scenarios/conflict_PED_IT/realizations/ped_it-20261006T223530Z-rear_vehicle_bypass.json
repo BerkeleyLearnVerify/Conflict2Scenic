@@ -1,0 +1,26 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "braking"
+  },
+  "agents": {
+    "agent1": {
+      "type": "pedestrian",
+      "maneuver": "crossing",
+      "position": "left_front_of_ego",
+      "order": 1
+    },
+    "agentStatic": {
+      "type": "car",
+      "maneuver": "stopping",
+      "position": "in_front_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego is a car responder, agent1 is a pedestrian initiator, and agentStatic is a car responder; the forward moving ego interacts with a pedestrian in the trafficway moving around, entering, exiting, or interacting with an adjacent vehicle/object. Chosen assumptions: agentStatic is stopped ahead in the same travel lane. Initiator agent1 walks from the left side around the vehicle rear to its right side, crossing the path of the forward moving ego behind the stopped car. Ego brakes on pedestrian proximity, with a separate close-vehicle brake trigger. AgentStatic stays stopped. Speeds: ego 4\u20136 m/s, pedestrian 1.1\u20131.4 m/s; vehicle separation 16\u201320 m; pedestrian response threshold 8\u201310 m. Conflict opportunity, without requiring collision."
+}

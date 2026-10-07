@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "braking"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "reversing",
+      "position": "right_front_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "no",
+    "right_lane_exists": "yes"
+  },
+  "comments": "Input facts: ego is the car responder, agent1 is the initiator, and at least one road user reverses. The allowed car type is selected. Assumptions: agent1 starts stationary in the same-direction lane to the right, 13-17 m ahead; it faces 90 degrees clockwise from the lane heading, so reversing moves it left across ego's approach lane. Reverse throttle is 0.12-0.22. Ego approaches at 3-4 m/s and brakes at center distance 9-11 m with brake 0.7-0.9. The local lanes have approximately parallel headings. The initiating mechanism is lateral backing into ego's path, not longitudinal backing. Collision is not required."
+}

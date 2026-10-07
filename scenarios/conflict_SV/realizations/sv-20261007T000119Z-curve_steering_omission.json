@@ -1,0 +1,13 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "accelerating"
+  },
+  "agents": {},
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego is the sole car and initiator; the single-vehicle group permits road departure without another partner. Chosen assumptions: ego starts aligned with a curved trafficway, then applies throttle without a lane-following steering controller. A point 40-45 m along its initial tangent lies outside the road, while the corresponding lane-centerline point differs by more than 8 m. Initial speed is 9-11 m/s and throttle is 0.35-0.55, held continuously. Adjacent lanes are not necessary. Outcome intent is a road-departure opportunity, without requiring collision or rollover."
+}

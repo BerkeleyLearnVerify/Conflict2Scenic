@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "braking"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "accelerating",
+      "position": "oncoming_lane",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "yes",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Agent1 is the initiator and ego is the responder (input facts). Assumptions: opposing straight approaches at a four-way intersection; after 1 second of approach at 5\u20137 m/s agent1 accelerates toward 11\u201314 m/s while following a leftward deflection across ego's straight path. A conflicting left-turn connector represents the loss-of-control displacement kinematically; tire dynamics are not modeled. Ego approaches at 7\u20139 m/s and continues for 0.7 seconds after detecting agent1 within 16\u201320 m before braking. Initial partner separation is 22\u201348 m. Opportunity for conflict is intended; collision is not required."
+}

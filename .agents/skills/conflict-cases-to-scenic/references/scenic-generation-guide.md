@@ -13,8 +13,7 @@ A Scenic program consists of these sections:
 - `SCENARIO SPECIFICATION`: object instances and behaviors
 - `REQUIREMENTS`: conditions required of the scenario
 
-Follow the syntax below strictly. Use generally available normal behaviors: `FollowLaneBehavior`, `FollowTrajectoryBehavior`, and `LaneChangeBehavior`. 
-<!-- Do not use MPCC behaviors or MPCC-only arguments such as `collision_avoidance`. -->
+Follow the syntax below strictly. Use generally available normal behaviors: `FollowLaneBehavior`, `FollowTrajectoryBehavior`, and `LaneChangeBehavior`.
 
 ## Map and model
 
@@ -58,7 +57,7 @@ egoInitLane = Uniform(*network.lanes)
 egoSpawnPt = new OrientedPoint in egoInitLane.centerline
 ```
 
-Map each chosen position to the corresponding construction below. Replace `car1` and parameter names consistently with the actual partner ID. Whenever calling `network.laneSectionAt(point)`, always pass a reject message.
+Map each chosen position to the corresponding construction below. Replace `car1` and parameter names consistently with the actual partner ID. Whenever calling `network.laneSectionAt(point)`, always pass a reject message. For pedestrians, refer to the `Pedestrian` section.
 
 ### `in_front_of_ego`
 
@@ -164,6 +163,39 @@ car1InitLane = Uniform(*filter(lambda m:
 car1SpawnPt = new OrientedPoint in car1InitLane.centerline
 ```
 
+### Pedestrians
+
+Pedestrians' spawm points are defined using offsets from ego's spawn point. For longitudinal offsets along the road direction, first define a helper function:
+
+```scenic
+from shapely.geometry import Point as ShapelyPoint
+from scenic.core.distributions import distributionFunction, RejectionException
+
+@distributionFunction
+def pointAheadOnLane(lane, start, distance):
+    centerline = lane.centerline.lineString
+    startDistance = centerline.project(ShapelyPoint(start.x, start.y))
+    endDistance = startDistance + distance
+    if endDistance > centerline.length:
+        raise RejectionException('not enough lane ahead for the crossing')
+    point = centerline.interpolate(endDistance)
+    return Vector(point.x, point.y)
+```
+
+Then, forward or backward longitudinal offsets along the road direction:
+
+```scenic
+ped1LongSpawnPt = new OrientedPoint at pointAheadOnLane(egoInitLane, egoSpawnPt.position, globalParameters.PED1_DIST)
+```
+
+Finally, apply lateral offsets:
+
+```scenic
+ped1SpawnPt = new OrientedPoint at ped1LongSpawnPt offset along roadDirection by (globalParameters.PED1_LAT_OFFSET, 0, 0)
+```
+
+Adjust the offset values according to the desired position in the realization.
+
 ## Agent behaviors
 
 Define the behavior of every agent using the maneuver selected for the concrete realization. Apply these mappings to ego as well as other partners: conflict roles may require ego to brake, accelerate, change lanes, or perform another initiating or responding maneuver.
@@ -237,6 +269,43 @@ behavior Agent1Behavior():
     take SetSpeedAction(0)
 ```
 
+### Reversing
+
+```scenic
+behavior Agent1Behavior():
+    take SetReverseAction(True)
+    take SetThrottleAction(globalParameters.AGENT1_THROTTLE)
+```
+
+### Walking (for pedestrians)
+
+Set a target point for the pedestrian to walk toward, for example:
+
+```scenic
+agent1EndPt = new OrientedPoint at agent1SpawnPt offset along roadDirection by (-5, 0, 0)
+```
+
+You may use the `pointAheadOnLane` function to help determine the target point. Then, the pedestrian will walk toward that point until it is reached, and then stop:
+
+```scenic
+behavior Agent1Behavior(endPt):
+    while distance from self to endPt >= 0.5:
+        take SetWalkingSpeedAction(globalParameters.AGENT1_SPEED)
+    while True:
+        take SetWalkingSpeedAction(0)
+```
+
+Finally, when instantiating the pedestrian, make the agent face toward the target point (see `Scenario specification` below).
+
+### Standing
+
+```scenic
+behavior Agent1Behavior():
+    take SetWalkingSpeedAction(0)
+```
+
+### Notes
+
 Note 1. By default, the ego agent is a car with `FollowLaneBehavior`. If the realization requires ego to perform a different maneuver, define an `EgoBehavior` using the same mappings above. If ego performs a braking maneuver to avoid a collision with any object within a threshold distance, use a try-interrupt block to implement. For example,
 ```scenic
 behavior EgoBehavior(trajectory):
@@ -249,6 +318,8 @@ behavior EgoBehavior(trajectory):
 
 Note 2. The `for X seconds` operator can only be used with `do Behavior()` statements. It cannot be used with `take Action()` statements.
 
+Note 3. `laneToRight` and `laneToLeft` are properties of a lane section, not a lane. Use `self.laneSection._laneToRight.lane` or `self.laneSection._laneToLeft.lane` to access the adjacent lane.
+
 ## Scenario specification
 
 Instantiate each partner with the class matching its type, spawn point, and behavior. For example:
@@ -260,6 +331,24 @@ ego = new Car at egoSpawnPt,
 ```
 
 Note 1. To create an agent facing the opposite direction of its lane, add `facing agent1SpawnPt.heading + 180 deg,` to the agent's construction. The specific number (e.g., `180 deg`) may vary depending on the agent's intended facing.
+
+Note 2. For walking pedestrians, add `facing toward agent1EndPt,` to the pedestrian's construction so that it faces toward its target point:
+
+```scenic
+agent1 = new Pedestrian at agent1SpawnPt,
+    facing toward agent1EndPt,
+    with behavior Agent1Behavior(agent1EndPt)
+```
+
+Note 3. By default, a pedestrian is specified with `with regionContainedIn network.walkableRegion,` which restricts the pedestrian to walkable areas. If the pedestrian is spawned on a roadway, you must explicitly specify `with regionContainedIn road,` to allow the pedestrian to be spawned there:
+
+```scenic
+agent1 = new Pedestrian at agent1SpawnPt,
+    with regionContainedIn road,
+    facing toward agent1EndPt,
+    with behavior Agent1Behavior(agent1EndPt)
+```
+This only corresponds to the pedestrian's initial spawn point. The pedestrian may later walk off the road. If the pedestrian is spawned on a sidewalk, no need to specify anything. If the pedestrian may be spawned on a sidewalk or road, you may specify `with regionContainedIn road.union(network.walkableRegion),` to allow both.
 
 ## Requirements
 
@@ -283,4 +372,4 @@ For a position left of ego (`left_of_ego`, `left_front_of_ego`, or `left_behind_
 require hasSameDirectionAdjacentLane(ego.laneSection, 'left')
 ```
 
-Use the analogous right-side requirement for positions right of ego. Also add left/right lane-existence requirements selected as part of the concrete road realization. Do not add duplicate requirements.
+Use the analogous right-side requirement for positions right of ego. Also add left/right lane-existence requirements selected as part of the concrete road realization. Do not add duplicate requirements. No need to require that a specific adjacent lane doesn't exist (e.g., no need to specify `require not hasSameDirectionAdjacentLane(ego.laneSection, 'left')`) unless it's essential to the conflict case.

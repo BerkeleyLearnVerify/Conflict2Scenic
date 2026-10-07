@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "braking"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "reversing",
+      "position": "in_front_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: backing requires at least one reversing road user; ego is the car responder and agent1 is the initiator, with the allowed car type selected. Assumptions: agent1 starts stationary 14-18 m ahead, faces the lane direction, and reverses with throttle 0.15-0.25; ego approaches at 3-4 m/s and brakes at center distance 9-11 m with brake 0.7-0.9. Both start in the same lane on an approximately straight segment. The initiating event is agent1 reversing toward ego; ego reacts to proximity. A conflict opportunity, rather than a required collision, is intended."
+}

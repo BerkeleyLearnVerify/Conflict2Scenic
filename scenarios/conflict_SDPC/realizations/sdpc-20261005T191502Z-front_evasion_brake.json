@@ -1,0 +1,20 @@
+{
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "lane_change_right",
+      "position": "left_front_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "yes",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego and agent1 are cars; ego is the responder and agent1 the initiator; both operate in the same direction on the same trafficway. Chosen assumptions: agent1 is ahead in the left lane and makes a rightward lateral evasive action after 1 second, representing avoidance of an unspecified prior hazard. Ego brakes when agent1 enters its lane within 14-18 m. Agent1 uses a 1-2 m target-lane clearance threshold. Speeds are m/s, distances m; brake is 0.7-0.9. Conflict opportunity only; no collision is required.",
+  "ego": {
+    "type": "car",
+    "maneuver": "braking"
+  }
+}

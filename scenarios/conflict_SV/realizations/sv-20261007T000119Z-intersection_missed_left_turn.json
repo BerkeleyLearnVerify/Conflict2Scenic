@@ -1,0 +1,13 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "accelerating"
+  },
+  "agents": {},
+  "road": {
+    "intersection": "yes",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego is the sole car and initiator; the group permits road departure without a conflict partner. Chosen assumptions: ego approaches a four-way intersection on an incoming lane with an available left-turn maneuver, but omits the turn and continues on its initial heading under throttle. A point 6 m ahead remains on the trafficway; a point 30-40 m ahead on the same heading lies outside the road. These geometric constraints select an approach where the unchecked straight path leaves the trafficway. Initial speed is 8-10 m/s and throttle is 0.25-0.45, held continuously. The left turn is the intended route, not an executed maneuver. No other actors or forced collision are introduced."
+}

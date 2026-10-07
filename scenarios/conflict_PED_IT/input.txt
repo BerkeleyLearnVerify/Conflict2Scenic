@@ -1,0 +1,20 @@
+{
+  "conflict_group": {
+    "title": "pedestrian-interacting-in-trafficway",
+    "property": "Occurs when a forward moving ego is on a trafficway and interacts with an agent that is in the trafficway and moving around, entering, exiting, or interacting with an immediately adjacent vehicle orobject."
+  },
+  "conflict_partners": {
+    "ego": {
+      "type": "car",
+      "role": "responder"
+    },
+    "agent1": {
+      "type": "pedestrian",
+      "role": "initiator"
+    },
+    "agentStatic": {
+      "type": "car",
+      "role": "responder"
+    }
+  }
+}

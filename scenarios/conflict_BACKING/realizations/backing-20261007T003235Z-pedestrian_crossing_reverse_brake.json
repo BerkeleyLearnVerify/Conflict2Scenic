@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "reversing"
+  },
+  "agents": {
+    "agent1": {
+      "type": "pedestrian",
+      "maneuver": "crossing",
+      "position": "right_behind_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego is the car responder and agent1 is the initiator; the allowed pedestrian type is selected. Backing is satisfied by ego reversing, since the group property does not require the initiator to be the reversing partner. Assumptions: ego starts stationary and reverses with throttle 0.12-0.2. Agent1 starts 8-10 m behind ego and 3-3.5 m to the right, then initiates a right-to-left crossing of 7 m at 0.9-1.3 m/s. Ego brakes when their center distance falls below 5-6 m, with brake 0.7-0.9. The crossing point must remain on the same approximately straight lane behind ego. The pedestrian may initially occupy the roadway or walkable region. Ego retains its responder role by reacting to the pedestrian entering its reversing path. Collision is not required."
+}

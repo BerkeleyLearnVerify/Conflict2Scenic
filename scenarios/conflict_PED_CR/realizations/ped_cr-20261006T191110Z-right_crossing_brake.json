@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "braking"
+  },
+  "agents": {
+    "agent1": {
+      "type": "pedestrian",
+      "maneuver": "crossing",
+      "position": "right_front_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego is the car responder; agent1 is the pedestrian initiator; one actor travels along the trafficway and the other crosses it without traveling along or onto another trafficway. Chosen assumptions: agent1 initiates an immediate perpendicular crossing from the right toward the left. Ego follows its lane and responds with sustained braking when agent1 is within 11\u201314 m. Initial longitudinal separation is 20\u201326 m; right lateral offset is 4\u20135 m; pedestrian speed is 1.4\u20131.8 m/s; ego target speed is 7\u20139 m/s. The target lies 4\u20135 m left of the lane center. No collision outcome is required. Adjacent lanes are not needed; the road fields do not forbid them."
+}

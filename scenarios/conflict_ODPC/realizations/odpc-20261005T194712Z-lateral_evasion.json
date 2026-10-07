@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "braking"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "left_turn",
+      "position": "oncoming_lane",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "yes",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Agent1 is the initiator and ego is the responder (input facts). Assumptions: opposing straight approaches at a four-way intersection; an unmodeled perceived hazard triggers agent1 after 1 second to steer left across the centerline along a conflicting left-turn connector. The connector is a kinematic evasive-path surrogate, not a planned intersection turn. Ego follows its straight trajectory and brakes when agent1 enters a 16\u201320 m safety radius. Approach speeds are 7\u20139 m/s, initial partner separation 22\u201348 m. Opportunity for conflict is intended; collision is not required."
+}

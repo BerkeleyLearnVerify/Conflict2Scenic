@@ -1,0 +1,16 @@
+{
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "lane_change_left",
+      "position": "right_behind_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "no",
+    "right_lane_exists": "yes"
+  },
+  "comments": "Input facts: ego and agent1 are cars; ego is the responder and agent1 the initiator; both operate in the same direction on the same trafficway. Chosen assumptions: the faster agent1 approaches from behind in the right lane and makes a leftward lateral evasive action after 1 second, representing avoidance of an unspecified prior hazard. Ego continues following its lane while exposed to the closing incursion. Agent1 uses a 1-2 m target-lane clearance threshold. Speeds are m/s and distances m. Conflict opportunity only; no collision is required."
+}

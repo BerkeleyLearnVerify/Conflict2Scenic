@@ -1,0 +1,12 @@
+{
+  "conflict_group": {
+    "title": "single-vehicle",
+    "property": "Includes all actions (or lack thereof) where the ego vehicle is traveling in a trafficway but then experiences an in-trafficway interaction without a conflict partner (e.g., a rollover event) or an off-trafficway interaction (e.g., a road departure)."
+  },
+  "conflict_partners": {
+    "ego": {
+      "type": "car",
+      "role": "initiator"
+    }
+  }
+}

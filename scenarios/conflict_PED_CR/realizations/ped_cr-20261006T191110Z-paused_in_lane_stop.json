@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "stopping"
+  },
+  "agents": {
+    "agent1": {
+      "type": "pedestrian",
+      "maneuver": "crossing",
+      "position": "in_front_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego is the car responder; agent1 is the pedestrian initiator; one actor travels along the trafficway and the other crosses it without traveling along or onto another trafficway. Chosen assumptions: agent1 has paused just right of the lane center during a right-to-left crossing and initiates renewed movement when ego is within 17\u201320 m. Ego is the responder and commands a sustained zero speed when agent1 is within 9\u201312 m. Initial longitudinal separation is 22\u201328 m; pedestrian lateral offset is 0.4\u20130.8 m right of center; resumed walking speed is 1.2\u20131.6 m/s; ego target speed is 7\u20139 m/s. The pedestrian continues to a target 4\u20135 m left of lane center and never travels along another trafficway. No collision outcome is required. Adjacent lanes are not needed; the road fields do not forbid them."
+}
