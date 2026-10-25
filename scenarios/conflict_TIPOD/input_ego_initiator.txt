@@ -1,0 +1,16 @@
+{
+  "conflict_group": {
+    "title": "turn-into-path-opposite-direction",
+    "property": "Occurs when one roadway actor changes vehicle-operated trafficways through a turning maneuver and interacts with another roadway actor, with one of the actors operating opposite to the trafficway's intended direction of travel."
+  },
+  "conflict_partners": {
+    "ego": {
+      "type": "car",
+      "role": "initiator"
+    },
+    "agent1": {
+      "type": "car",
+      "role": "responder"
+    }
+  }
+}

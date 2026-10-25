@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "right_turn"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "passing_intersection",
+      "position": "lateral_lane_at_intersection",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "yes",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego and agent1 are cars; ego initiates by turning onto the trafficway occupied by responder agent1. Chosen assumptions: ego approaches from the side and turns right into the same outgoing lane as agent1, which continues straight at its target speed without a special evasive action. Ego enters just before the faster through car; the conflict is the converging entry, not merely crossing its trajectory. Speeds, initial distances, a nominal entry-time gap, and any response delay are chosen assumptions; no collision outcome is required."
+}

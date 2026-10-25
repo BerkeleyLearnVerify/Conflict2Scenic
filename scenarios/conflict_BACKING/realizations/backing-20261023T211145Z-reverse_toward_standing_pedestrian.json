@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "reversing"
+  },
+  "agents": {
+    "agent1": {
+      "type": "pedestrian",
+      "maneuver": "standing",
+      "position": "behind_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego is a car initiator; agent1 is a responder with allowed type car or pedestrian; the backing group requires at least one reversing road user. Chosen assumptions: agent1 stands in the travel lane 6-8 m behind ego, continuing to stand as ego backs toward it. Ego waits 0.6-0.9 s, reverses with throttle 0.25-0.35 for 3-4 s, then brakes. No sidewalk, parking bay, or marked crossing is required. Distances are center-to-center, speeds are m/s, and times are seconds. Outcome intent is a conflict opportunity, without requiring collision."
+}

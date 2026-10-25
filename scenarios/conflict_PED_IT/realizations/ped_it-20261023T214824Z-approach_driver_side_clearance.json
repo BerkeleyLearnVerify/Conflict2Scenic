@@ -1,0 +1,26 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "follow_lane"
+  },
+  "agents": {
+    "agent1": {
+      "type": "pedestrian",
+      "maneuver": "crossing",
+      "position": "in_front_of_ego",
+      "order": 1
+    },
+    "agentStatic": {
+      "type": "car",
+      "maneuver": "stopping",
+      "position": "right_front_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "no",
+    "right_lane_exists": "yes"
+  },
+  "comments": "Input facts: ego is the forward-moving car initiator; agent1 is the pedestrian responder; agentStatic is the car responder. Chosen assumptions: agentStatic is stopped in the adjacent right driving lane, with agent1 in ego's lane beside its driver side. Ego initiates the conflict through forward closure on this occupied clearance space. Agent1 waits at the car, then moves laterally toward its side when ego comes within 9-10 m; the car remains stopped. Both are 17-18 m ahead; pedestrian lateral offset 1.25-1.35 m right of ego lane center, lateral clearance response 0.65-0.75 m, walking speed 0.9-1.1 m/s. Ego follows at 3.5-4 m/s and brakes within 4.5-5.5 m. Intended observation window 8 s; no impact or vehicle-door animation is required."
+}

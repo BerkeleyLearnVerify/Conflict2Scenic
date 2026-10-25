@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "accelerating"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "lane_change_right",
+      "position": "in_front_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "yes",
+    "right_lane_exists": "yes"
+  },
+  "comments": "Input facts: ego and agent1 remain cars, with ego the initiator and agent1 the responder; their travel directions oppose one another in the same trafficway. Chosen assumptions: ego begins facing against the intended direction in a middle lane and initiates forward acceleration at t=0, capped at 3-4 m/s. Agent1 drives legally in that same lane at 5-6 m/s, physically ahead of ego along its reversed heading, 40-45 m away at a negative intended-lane offset. After the gap drops below 34-38 m, agent1 reacts for 0.2-0.4 s and changes to its right when the target lane is clear within 8-10 m. Both mapped same-direction neighbors exist, avoiding any ambiguity of lane availability when ego faces the opposite way. This responder makes an evasive lateral maneuver instead of stopping in the shared path. All three lanes coexist along the straight corridor; both actors brake after a six-second motion window. Collision is not required."
+}

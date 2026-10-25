@@ -1,0 +1,26 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "lane_change_left"
+  },
+  "agents": {
+    "agent1": {
+      "type": "pedestrian",
+      "maneuver": "crossing",
+      "position": "left_front_of_ego",
+      "order": 1
+    },
+    "agentStatic": {
+      "type": "car",
+      "maneuver": "stopping",
+      "position": "in_front_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "yes",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego is the forward-moving car initiator; agent1 is the pedestrian responder; agentStatic is the car responder. Chosen assumptions: the car is stopped ahead in ego's lane; the pedestrian is already walking around its left side in the adjacent same-direction driving lane. After 1 s of forward preparation ego initiates a left bypass into that occupied lane. Agent1 freezes when ego approaches within 11-12 m; agentStatic remains stopped. Car distance 18-19 m, pedestrian longitudinal offset 0.2 m behind its center and lateral offset 2.05-2.15 m left of ego lane center, ordinary walking speed 0.6-0.8 m/s toward a point 0.8 m farther left. Ego target speed 3-3.5 m/s; permissive target-lane check 2.5-3 m; late braking threshold 5.5-6.5 m. Intended observation window 8 s; impact is not required."
+}

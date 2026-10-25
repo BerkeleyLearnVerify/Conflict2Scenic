@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "lane_change_left"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "lane_change_right",
+      "position": "left_behind_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "yes",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego and agent1 are cars; ego initiates lateral incursion and agent1 responds; both initially travel in different lanes of the same trafficway. Chosen assumptions: a compact urban two-lane corridor; a faster agent1 approaches on ego left. Ego cuts left after 0.6 s. When ego enters agent1 lane within 14 m, agent1 waits 0.15 s and attempts a right evasive lane change into the lane ego is vacating if clear. This creates intersecting lateral paths instead of the outward escape into a third lane. Speeds are m/s, distances are m, and times are s. Collision is not required."
+}

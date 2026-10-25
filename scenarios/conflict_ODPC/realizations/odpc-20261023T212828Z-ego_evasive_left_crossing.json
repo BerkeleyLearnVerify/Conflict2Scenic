@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "left_turn"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "braking",
+      "position": "oncoming_lane",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "yes",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego and agent1 are cars; ego initiates and agent1 responds; both initially travel legally on opposing approaches. Chosen assumptions: at a four-way junction ego makes an emergency left diversion to avoid an abstracted road-surface hazard ahead; the hazard is a motivation, not an additional modeled actor. Ego approaches at 7-9 m/s and commits when partner separation drops below 42-45 m. Agent1 initially follows a straight route at 6-8 m/s, reacts to ego occupying its connector or lying within 13-16 m, follows its route for another 0.25-0.45 s, then brakes continuously at 0.7-0.9. The left connector crosses the opposing straight connector. Conflict opportunity only; no collision requirement."
+}

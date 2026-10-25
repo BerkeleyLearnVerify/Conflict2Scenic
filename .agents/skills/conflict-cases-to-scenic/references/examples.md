@@ -4,6 +4,8 @@ These examples show how to translate resolved-realization JSON into complete Sce
 
 Resolved-realization JSON is an intermediate representation, not an additional field in the user's conflict-case input. Its complete schema is defined in [the input and output contract](conflict-case-contract.md).
 
+Follow [map selection](map-selection.md) for each realization. The examples assume programs are written to `scenarios/conflict_<ID>/scenic/`; recompute map paths for other output directories. Example 1 selects Town05 for sustained same-direction adjacent lanes. Example 2 selects Town04 for its four-approach junction candidates. Neither map is a fixed default.
+
 ## Example 1: lane-relative placement and lane change
 
 Resolved realization:
@@ -34,7 +36,8 @@ Scenic program:
 # MAP AND MODEL                 #
 #################################
 
-param map = localPath('../../maps/Town05.xodr')
+# Selected Town05 for a same-direction lane to the left.
+param map = localPath('../../../maps/Town05.xodr')
 model scenic.simulators.metadrive.model
 
 #################################
@@ -135,7 +138,8 @@ Scenic program:
 # MAP AND MODEL                 #
 #################################
 
-param map = localPath('../../maps/Town05.xodr')
+# Selected Town04 for four-approach junctions with crossing straight movements.
+param map = localPath('../../../maps/Town04.xodr')
 model scenic.simulators.metadrive.model
 
 #################################

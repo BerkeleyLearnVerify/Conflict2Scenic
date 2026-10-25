@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "reversing"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "passing_intersection",
+      "position": "lateral_lane_at_intersection",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "yes",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego is a car initiator; agent1 is a responder with allowed type car or pedestrian; the backing group requires at least one reversing road user. Chosen assumptions: ego starts 5-7 m short of a four-way intersection, facing against its incoming lane direction, so reversing carries it into the junction. Ego waits 0.6-0.9 s, reverses with throttle 0.35-0.45 for 5-6 s, then brakes. Agent1 starts 12-16 m from the same junction on a conflicting straight approach, follows its straight trajectory at 3-4 m/s, and brakes after a 0.3-0.5 s reaction when within 10-12 m of ego. Distances are center-to-center, speeds are m/s, and times are seconds. Outcome intent is a conflict opportunity, without requiring collision."
+}

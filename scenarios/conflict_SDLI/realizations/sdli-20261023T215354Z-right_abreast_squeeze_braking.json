@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "lane_change_right"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "braking",
+      "position": "right_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "no",
+    "right_lane_exists": "yes"
+  },
+  "comments": "Input facts: ego and agent1 are cars; ego initiates lateral incursion and agent1 responds; both initially travel in different lanes of the same trafficway. Chosen assumptions: a compact urban two-lane corridor with the cars initially abreast. After 0.6 s ego squeezes right toward agent1; agent1 reacts after ego enters its lane within 10 m, with a 0.15 s delay before sustained braking. Speeds are m/s, distances are m, and times are s. Collision is not a required outcome."
+}

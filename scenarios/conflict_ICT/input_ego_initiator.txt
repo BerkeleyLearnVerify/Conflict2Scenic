@@ -1,0 +1,16 @@
+{
+  "conflict_group": {
+    "title": "intersection-cross-traffic",
+    "property": "Occurs when both roadway actors change or cross trafficways at an intersection and their paths cross one another."
+  },
+  "conflict_partners": {
+    "ego": {
+      "type": "car",
+      "role": "initiator"
+    },
+    "agent1": {
+      "type": "car",
+      "role": "responder"
+    }
+  }
+}

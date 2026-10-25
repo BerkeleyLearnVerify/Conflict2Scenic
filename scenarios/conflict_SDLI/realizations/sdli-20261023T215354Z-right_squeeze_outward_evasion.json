@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "lane_change_right"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "lane_change_right",
+      "position": "right_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "no",
+    "right_lane_exists": "yes"
+  },
+  "comments": "Input facts: ego and agent1 are cars; ego initiates lateral incursion and agent1 responds; both initially travel in different lanes of the same trafficway. Chosen assumptions: three coexisting same-direction lanes, ego in the leftmost participating lane and agent1 in the middle. Ego moves right after 0.6 s. Agent1 observes ego enter its lane within 12 m, waits 0.1 s, and evades right into the empty third lane if clear. Speeds are m/s, distances are m, and times are s. The third lane is required by agent1 maneuver, not an additional partner; collision is not required."
+}

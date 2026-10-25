@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "right_turn"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "right_turn",
+      "position": "behind_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "yes",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego and agent1 are cars; ego initiates and agent1 responds; both share a travel lane and direction. Chosen assumptions: both plan the same right-turn trajectory at a four-way intersection. Ego leads at 7.5-8.5 m/s, 28-30 m before the junction; agent1 follows 14-16 m behind at the same speed. After 1 s ego lowers its target speed to 3-4 m/s for the turn, creating the rear conflict on the common incoming lane. Agent1 follows the identical trajectory, reducing its target to 3-4 m/s when separation falls below 12-14 m. The approach is at least 55 m long and the outgoing lane at least 40 m; the horizon is 10 s. This is a route-induced slowdown without a lateral crossing conflict or required collision."
+}

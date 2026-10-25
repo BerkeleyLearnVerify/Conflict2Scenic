@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "reversing"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "lane_change_left",
+      "position": "behind_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "yes",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego is a car initiator; agent1 is a responder with allowed type car or pedestrian; the backing group requires at least one reversing road user. Chosen assumptions: agent1 approaches from 17-21 m behind at 3-4 m/s and changes to the clear same-direction left lane when within 14-16 m of ego. Ego waits 0.6-0.9 s, reverses with throttle 0.25-0.35 for 3-4 s, then brakes; the follower evades the reversing initiator. Distances are center-to-center, speeds are m/s, and times are seconds. Outcome intent is a conflict opportunity, without requiring collision."
+}

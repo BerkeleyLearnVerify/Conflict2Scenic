@@ -1,0 +1,26 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "accelerating"
+  },
+  "agents": {
+    "agent1": {
+      "type": "pedestrian",
+      "maneuver": "crossing",
+      "position": "in_front_of_ego",
+      "order": 1
+    },
+    "agentStatic": {
+      "type": "car",
+      "maneuver": "stopping",
+      "position": "left_front_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "yes",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego is the forward-moving car initiator; agent1 is the pedestrian responder; agentStatic is the car responder. Chosen assumptions: agentStatic holds stopped in the adjacent left lane; agent1 has walked around its front-right corner into ego's lane and continues longitudinally. Ego establishes forward motion for 1 s, then accelerates into the pedestrian's occupied corridor. Agent1 hurries forward when ego comes within 10-11 m; the stopped car remains stationary. Car distance 15-16 m; pedestrian 3.1-3.3 m beyond its center, 1.15-1.25 m left of ego lane center, with a walking target 4 m farther forward. Walking speed changes from 0.6-0.8 to 1.5-1.8 m/s. Ego approach target 2.5-3 m/s, throttle 0.18-0.23, late brake trigger 5.5-6.5 m. Intended observation window 8 s; impact is not required."
+}

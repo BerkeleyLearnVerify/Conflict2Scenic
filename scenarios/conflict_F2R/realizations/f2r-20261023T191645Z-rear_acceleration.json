@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "accelerating"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "follow_lane",
+      "position": "in_front_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego and agent1 are cars; ego initiates and agent1 responds; both share a travel lane and direction. Chosen assumptions: ego follows agent1 at 7-8 m/s, initially 23-26 m behind. After 2 s ego applies throttle 0.45-0.6 for 1.3-1.6 s, then targets 13-14 m/s, creating closure from behind. Agent1 responds passively by holding its original lane and speed. A long straight non-intersection corridor supports an 8 s horizon; the scenario creates a conflict opportunity without requiring collision."
+}

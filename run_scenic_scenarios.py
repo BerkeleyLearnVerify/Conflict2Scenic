@@ -8,6 +8,7 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import scenic
 from matplotlib.animation import FFMpegWriter, FuncAnimation
+from matplotlib.lines import Line2D
 from matplotlib.patches import Polygon
 from scenic.simulators.metadrive import MetaDriveSimulator
 from shapely.geometry import Polygon as ShapelyPolygon
@@ -89,27 +90,66 @@ def recorded_polygon_program(file_path):
             Path(temporary_path).unlink(missing_ok=True)
 
 
+def _resolve_map_paths(scene, map_path=None):
+    """Resolve simulator assets from the sampled Scenic map and a SUMO override."""
+    try:
+        xodr_path = Path(scene.params["map"]).expanduser().resolve()
+    except (KeyError, TypeError, ValueError) as exc:
+        raise ValueError(
+            "The Scenic program must define a 'map' parameter pointing to an "
+            "OpenDRIVE file, or an xodr_map_path override must be supplied."
+        ) from exc
+    if xodr_path.suffix.lower() != ".xodr":
+        raise ValueError(f"Expected an OpenDRIVE .xodr map, got: {xodr_path}")
+    if not xodr_path.is_file():
+        raise FileNotFoundError(f"OpenDRIVE map not found: {xodr_path}")
+
+    sumo_path = (
+        Path(map_path).expanduser().resolve()
+        if map_path is not None
+        else xodr_path.with_suffix(".net.xml")
+    )
+    if not sumo_path.is_file():
+        raise FileNotFoundError(
+            f"SUMO map not found: {sumo_path}. Provide the matching .net.xml "
+            "using map_path or --map-path."
+        )
+    return sumo_path, xodr_path
+
+
 def run_metadrive_scenario(
     file_path,
     max_steps=100,
     seed=None,
     maxIterations=10,
-    map_path="maps/Town05.net.xml",
-    xodr_map_path="maps/Town05.xodr",
+    map_path=None,
+    xodr_map_path=None,
 ):
+    """Use the program's map unless explicit simulator assets are supplied."""
     if seed is not None:
         random.seed(seed)
+    params = {}
+    if xodr_map_path is not None:
+        xodr_override = Path(xodr_map_path).expanduser().resolve()
+        if not xodr_override.is_file():
+            raise FileNotFoundError(f"OpenDRIVE map not found: {xodr_override}")
+        # Scenic must build its geometry from the same map used by MetaDrive.
+        params["map"] = str(xodr_override)
     scenic.setDebuggingOptions(
         verbosity=1, fullBacktrace=True, debugExceptions=False, debugRejections=False
     )
     with recorded_polygon_program(file_path) as (run_file_path, polygon_record_ids):
         scenario = scenic.scenarioFromFile(
-            run_file_path, model="scenic.simulators.metadrive.model", mode2D=True
+            run_file_path,
+            params=params,
+            model="scenic.simulators.metadrive.model",
+            mode2D=True,
         )
         scene, _ = scenario.generate()
+        sumo_path, xodr_path = _resolve_map_paths(scene, map_path)
         simulator = MetaDriveSimulator(
-            sumo_map=map_path,
-            xodr_map=xodr_map_path,
+            sumo_map=str(sumo_path),
+            xodr_map=str(xodr_path),
         )
         simulation = simulator.simulate(
             scene, maxSteps=max_steps, maxIterations=maxIterations
@@ -294,6 +334,150 @@ def visualize_simulation(
     print(f"Video saved to {save_path}")
 
 
+def visualize_simulation_figure(
+    simulation,
+    save_path="trajectory.png",
+    sample_interval=10,
+    *,
+    ids=None,
+    violated_rules=None,
+    truncate=0,
+):
+    """Draw sampled agent footprints, centroid paths, and occupied lanes.
+
+    Adapted from Mosaic's visualize_simulation_figure for this runner's named
+    polygon records. Always include the final frame, even between intervals.
+    """
+    if sample_interval < 1 or int(sample_interval) != sample_interval:
+        raise ValueError("sample_interval must be a positive integer")
+    sample_interval = int(sample_interval)
+    if ids is None:
+        ids = getattr(simulation, "polygon_record_ids", None)
+    if ids is None:
+        ids = [key for key in simulation.records if key.endswith("Poly")]
+    trajectories = {}
+    for record_id in ids:
+        if record_id not in simulation.records:
+            raise ValueError(f"ID {record_id} not found in simulation records.")
+        trajectories[record_id] = simulation.records[record_id][truncate:]
+    agents = {
+        key: trajectory
+        for key, trajectory in trajectories.items()
+        if "Lane" not in key and any(poly is not None for _, poly in trajectory)
+    }
+    if not agents:
+        raise ValueError("No agent polygon samples found for the trajectory figure.")
+
+    def sampled_indices(trajectory):
+        indices = list(range(0, len(trajectory), sample_interval))
+        if indices and indices[-1] != len(trajectory) - 1:
+            indices.append(len(trajectory) - 1)
+        return indices
+
+    fig, ax = plt.subplots(figsize=(10, 10))
+    try:
+        ax.set_aspect("equal", "box")
+        seen_lanes = set()
+        for record_id, trajectory in trajectories.items():
+            if "Lane" not in record_id:
+                continue
+            for frame in sampled_indices(trajectory):
+                lane = trajectory[frame][1]
+                if lane is None or lane.wkb in seen_lanes:
+                    continue
+                seen_lanes.add(lane.wkb)
+                ax.add_patch(
+                    Polygon(
+                        list(lane.exterior.coords), closed=True,
+                        facecolor="lightgray", edgecolor="gray",
+                        linewidth=0.8, alpha=0.18, zorder=0,
+                    )
+                )
+
+        all_x, all_y = [], []
+        legend_handles = []
+        for index, (record_id, trajectory) in enumerate(agents.items()):
+            color = plt.cm.tab10(index % 10)
+            samples = [
+                trajectory[frame][1]
+                for frame in sampled_indices(trajectory)
+                if trajectory[frame][1] is not None
+            ]
+            if not samples:
+                continue
+            centroids = [polygon.centroid for polygon in samples]
+            is_ego = record_id == "egoPoly"
+            line_width = 2.6 if is_ego else 1.8
+            ax.plot(
+                [point.x for point in centroids],
+                [point.y for point in centroids],
+                color=color, linewidth=line_width, alpha=0.85, zorder=2,
+            )
+            for sample_index, polygon in enumerate(samples):
+                x_coords, y_coords = polygon.exterior.xy
+                all_x.extend(x_coords)
+                all_y.extend(y_coords)
+                progress = sample_index / max(len(samples) - 1, 1)
+                ax.add_patch(
+                    Polygon(
+                        list(polygon.exterior.coords), closed=True,
+                        facecolor=color, edgecolor=color,
+                        linewidth=1.5 if is_ego else 1.0,
+                        alpha=0.15 + 0.4 * progress, zorder=3,
+                    )
+                )
+                centroid = polygon.centroid
+                ax.annotate(
+                    str(sample_index + 1), (centroid.x, centroid.y),
+                    xytext=(4, -9), textcoords="offset points",
+                    fontsize=7, ha="left", va="top", color=color,
+                    bbox={
+                        "boxstyle": "round,pad=0.12", "facecolor": "white",
+                        "edgecolor": color, "linewidth": 0.5, "alpha": 0.85,
+                    },
+                    zorder=5,
+                )
+            start, end = centroids[0], centroids[-1]
+            ax.scatter(start.x, start.y, color=color, marker="o", s=45, zorder=4)
+            ax.scatter(end.x, end.y, color=color, marker="*", s=110, zorder=4)
+            legend_handles.append(
+                Line2D([0], [0], color=color, linewidth=line_width,
+                       label=record_id[:-4])
+            )
+
+        if not all_x:
+            raise ValueError("No agent polygon samples found at the selected frames.")
+        # Frame the agents rather than entire lanes, which can be very long.
+        span = max(max(all_x) - min(all_x), max(all_y) - min(all_y)) + 20
+        center_x = (min(all_x) + max(all_x)) / 2
+        center_y = (min(all_y) + max(all_y)) / 2
+        ax.set_xlim(center_x - span / 2, center_x + span / 2)
+        ax.set_ylim(center_y - span / 2, center_y + span / 2)
+        marker_handles = [
+            Line2D([0], [0], color="black", marker="o", linestyle="None",
+                   label="start point"),
+            Line2D([0], [0], color="black", marker="*", markersize=10,
+                   linestyle="None", label="end point"),
+        ]
+        ax.legend(handles=legend_handles + marker_handles, loc="best")
+        ax.set_xlabel("x (m)")
+        ax.set_ylabel("y (m)")
+        ax.set_title("Agent trajectories")
+        ax.grid(alpha=0.2)
+        if violated_rules:
+            ax.text(
+                0.02, 0.98, "\n".join(violated_rules), transform=ax.transAxes,
+                ha="left", va="top", color="red",
+                bbox=dict(facecolor="white", alpha=0.7, edgecolor="none"),
+            )
+        output_path = Path(save_path)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        fig.savefig(str(output_path), dpi=200, bbox_inches="tight")
+    finally:
+        plt.close(fig)
+    print(f"Trajectory figure saved to {output_path}")
+
+
 def default_visualization_path(file_path):
     """Place the video beside the directory containing the Scenic program."""
     scenario_path = Path(file_path)
@@ -310,15 +494,20 @@ def run_and_visualize_scenario(
     max_steps=100,
     seed=None,
     maxIterations=10,
-    map_path="maps/Town05.net.xml",
-    xodr_map_path="maps/Town05.xodr",
+    map_path=None,
+    xodr_map_path=None,
     violated_rules=None,
     save_path=None,
     fps=10,
     trail_length=15,
     truncate=0,
+    sample_interval=10,
+    video=True,
+    png=False,
 ):
-    """Run a Scenic program and visualize every recorded agent/lane polygon."""
+    """Run once and optionally save an MP4 (default on) and PNG (default off)."""
+    if png and (sample_interval < 1 or int(sample_interval) != sample_interval):
+        raise ValueError("sample_interval must be a positive integer")
     output_path = (
         Path(save_path) if save_path is not None else default_visualization_path(file_path)
     )
@@ -330,34 +519,76 @@ def run_and_visualize_scenario(
         map_path=map_path,
         xodr_map_path=xodr_map_path,
     )
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    visualize_simulation(
-        simulation,
-        violated_rules=violated_rules,
-        save_path=str(output_path),
-        fps=fps,
-        trail_length=trail_length,
-        truncate=truncate,
-    )
+    if video or png:
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+    if video:
+        visualize_simulation(
+            simulation,
+            violated_rules=violated_rules,
+            save_path=str(output_path),
+            fps=fps,
+            trail_length=trail_length,
+            truncate=truncate,
+        )
+    if png:
+        visualize_simulation_figure(
+            simulation,
+            save_path=str(output_path.with_suffix(".png")),
+            sample_interval=sample_interval,
+            violated_rules=violated_rules,
+            truncate=truncate,
+        )
     return simulation
+
+
+def _parse_bool(value):
+    value = value.lower()
+    if value not in ("true", "false"):
+        raise argparse.ArgumentTypeError("expected true or false")
+    return value == "true"
 
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Run a Scenic scenario in MetaDrive and save its visualization."
+        description="Run a Scenic scenario in MetaDrive with optional MP4 and trajectory PNG output."
     )
     parser.add_argument("scenario", help="Path to the input Scenic program")
     parser.add_argument(
         "--save-path",
-        help="Output MP4 path (default: visualizations/ beside the scenario directory)",
+        help="Output visualizations path (default: visualizations/ beside the scenario directory)",
+    )
+    parser.add_argument(
+        "--video", type=_parse_bool, default=True, metavar="{true,false}",
+        help="Save an MP4 visualization (default: true)",
+    )
+    parser.add_argument(
+        "--png", type=_parse_bool, default=False, metavar="{true,false}",
+        help="Save a static trajectory figure (default: false)",
+    )
+    parser.add_argument(
+        "--sample-interval", type=int, default=10,
+        help="Frames between agent footprints in the trajectory figure (default: 10)",
+    )
+    parser.add_argument(
+        "--map-path",
+        help="SUMO .net.xml override (default: companion of the Scenic map)",
+    )
+    parser.add_argument(
+        "--xodr-map-path",
+        help="OpenDRIVE .xodr override for both Scenic and MetaDrive",
     )
     args = parser.parse_args()
 
     run_and_visualize_scenario(
         args.scenario,
         save_path=args.save_path,
+        map_path=args.map_path,
+        xodr_map_path=args.xodr_map_path,
+        sample_interval=args.sample_interval,
+        video=args.video,
+        png=args.png,
         max_steps=120,
-        seed=42,
+        seed=0,
     )
 
 

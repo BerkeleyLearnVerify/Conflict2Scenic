@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "lane_change_left"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "lane_change_right",
+      "position": "behind_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "yes",
+    "right_lane_exists": "yes"
+  },
+  "comments": "Chosen assumptions: ego leads in a middle lane at 8-9 m/s and initiates a left lateral evasion after 2 s. Agent1 follows in the same lane, 18-20 m behind at 11-12 m/s, and reacts after 0.3-0.5 s by escaping right while ego is departing left. The interaction begins in the source lane; both flanking lanes must coexist. Ego is the initiator and agent1 the responder. Seven-second horizon; no collision is required."
+}

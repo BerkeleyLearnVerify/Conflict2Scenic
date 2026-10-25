@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "accelerating"
+  },
+  "agents": {
+    "agent1": {
+      "type": "pedestrian",
+      "maneuver": "standing",
+      "position": "in_front_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego is the car initiator; agent1 is the pedestrian responder; the group permits stationary non-crossing trafficway occupancy. Chosen assumptions: ego initially holds still for 1 s, then initiates the conflict by applying throttle 0.18-0.24 toward agent1 standing near the lane center 18-21 m ahead. Ego brakes at 10-12 m with input 0.7-0.9; agent1 stays still. This is a launch into an occupied forward path rather than a moving approach. Outcome intent: conflict opportunity, with no collision requirement. All realizations use stationary pedestrians because the schema provides no parallel-walking pedestrian maneuver."
+}

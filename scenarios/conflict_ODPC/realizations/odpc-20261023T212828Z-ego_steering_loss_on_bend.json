@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "accelerating"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "braking",
+      "position": "oncoming_lane",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: two cars initially travel in opposite directions in their respective legal lanes; ego is initiator and agent1 responder. Chosen assumptions: ego loses steering control at the start and applies open-loop throttle 0.15-0.25 while continuing along its initial tangent instead of following a right-hand bend. The accelerating maneuver represents this uncontrolled powered motion, not ordinary lane-following acceleration. Legal initial speeds are established with SetSpeedAction: ego 7-9 m/s, agent1 5-7 m/s. The selected undivided curved segment has one 3.2 m lane in each direction and no central separator. Ego starts near the outer end of the bend; the tangent intersects the opposing lane ahead, where agent1 approaches. Agent1 follows its lane until the cars are within 15-18 m, continues for a 0.25-0.45 s reaction, and then brakes continuously at 0.7-0.9. No tire/friction or prior-collision model is claimed. Conflict opportunity only."
+}

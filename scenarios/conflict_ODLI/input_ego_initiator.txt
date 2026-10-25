@@ -1,0 +1,16 @@
+{
+  "conflict_group": {
+    "title": "opposite-direction-lateral-incursion",
+    "property": "Occurs when a non-turning actor operating in the trafficway’s intended travel direction interacts with another actor that is operating opposite of the travel direction in the same trafficway."
+  },
+  "conflict_partners": {
+    "ego": {
+      "type": "car",
+      "role": "initiator"
+    },
+    "agent1": {
+      "type": "car",
+      "role": "responder"
+    }
+  }
+}

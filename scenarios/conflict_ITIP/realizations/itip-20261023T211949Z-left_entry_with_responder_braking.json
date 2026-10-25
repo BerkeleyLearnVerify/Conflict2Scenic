@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "left_turn"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "braking",
+      "position": "lateral_lane_at_intersection",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "yes",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego and agent1 are cars; ego initiates by turning onto the trafficway occupied by responder agent1. Chosen assumptions: ego turns left from a lateral approach into agent1's outgoing lane. Agent1 proceeds straight on the receiving road, detects the completed entry, continues for a short reaction delay, then brakes continuously. The shared outgoing lane is required to distinguish turning into a path from crossing traffic. Speeds, initial distances, a nominal entry-time gap, and any response delay are chosen assumptions; no collision outcome is required."
+}

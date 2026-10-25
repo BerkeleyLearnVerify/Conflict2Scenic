@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "passing_intersection"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "left_turn",
+      "position": "lateral_lane_at_intersection",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "yes",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: intersection-cross-traffic; both partners are cars; ego is the initiator and agent1 the responder; both planned intersection paths cross. Chosen assumptions: four-way junction, lateral approaches, 12-24 m initial approach clearance, nonzero initial speeds equal to trajectory target speeds (m/s), and ego reaching the crossing 0.1-0.45 s before agent1 under constant-speed estimates. The crossing opportunity is intentional; no collision is required. Ego proceeds straight across the left-turn path of agent1 approaching from the right. Agent1 continues its committed left turn under trajectory control without an added evasive brake."
+}

@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "lane_change_left"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "braking",
+      "position": "left_front_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "yes",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego and agent1 are cars; ego initiates and agent1 responds; one non-turning actor follows the trafficway intended direction while another travels opposite it. Chosen assumptions: ego travels legally at 5-6 m/s and, after one second, initiates a left lane change into a mapped same-direction lane. Agent1 is already driving wrong-way in that target lane, 40-45 m ahead, facing 180 degrees against its lane, and accelerates only up to 3-4 m/s. The wrong-way condition predates the event; ego creates the interaction by entering that lane, preserving its initiator role. Agent1 starts monitoring after the one-second preparation, responds within 28-32 m after 0.2-0.4 s, then brakes continuously at 0.8-1.0. The ego lane change requires no object within 8-10 m of ego in the target lane. Both lanes have coexisting straight clearance; no crossing of a central divider is involved. Ego brakes after a six-second motion window. Collision is not required."
+}

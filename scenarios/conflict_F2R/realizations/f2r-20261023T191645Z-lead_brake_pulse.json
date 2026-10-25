@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "braking"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "braking",
+      "position": "behind_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego and agent1 are cars; ego initiates and agent1 responds; both share a travel lane and direction. Chosen assumptions: ego leads at 9-10 m/s with agent1 17-20 m behind at the same speed. After 2 s ego applies a 0.65-0.8 brake pulse for 0.7-0.9 s, then resumes cruising. Agent1 detects separation below 14-16 m, continues for a 0.3-0.5 s reaction delay, brakes at 0.75-0.9 for 1.0-1.2 s, then resumes cruising. A straight non-intersection corridor supports an 8 s horizon. This is a temporary speed disturbance, with a conflict opportunity rather than a required collision."
+}

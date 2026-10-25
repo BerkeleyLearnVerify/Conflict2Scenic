@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "accelerating"
+  },
+  "agents": {
+    "agent1": {
+      "type": "pedestrian",
+      "maneuver": "crossing",
+      "position": "left_front_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego is the car initiator and agent1 the pedestrian responder; the pedestrian crosses the trafficway without following another trafficway. Chosen assumptions: a straight, undivided, two-way road; pedestrian starts from the opposite sidewalk 28\u201330 m ahead, crossing toward the near sidewalk. Ego accelerates after 1 s from 2.5\u20133 m/s, closing a previously larger gap; pedestrian responds within 21\u201322 m by increasing walking speed from 1.2\u20131.4 to 2.8\u20133.2 m/s and clearing the ego lane. The initiating event is car acceleration, not pedestrian entry. Parameters and the 16 s horizon are assumptions; collision is not required."
+}

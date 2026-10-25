@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "lane_change_left"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "left_turn",
+      "position": "lateral_lane_at_intersection",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "yes",
+    "left_lane_exists": "yes",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego and agent1 are cars; ego initiates and agent1 responds; the roadways cross and a prior evasive action, loss of control, or collision is required. Chosen assumptions: Ego makes an evasive left lane change before proceeding straight into the crossing. Agent1 approaches on the perpendicular roadway, follows a conflicting left-turn route, and brakes if ego comes close. The evasive action is an exogenous driver decision; no unlisted obstacle or prior collision is invented. Both approaches have about 38-44 m remaining initially, with target speeds near 6 m/s and a short preparation period. The encounter follows the lane change in ego's behavior sequence; no secondary collision is required. Nominal observation horizon: 18 seconds."
+}

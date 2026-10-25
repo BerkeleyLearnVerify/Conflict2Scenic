@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "lane_change_right"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "follow_lane",
+      "position": "right_front_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "no",
+    "right_lane_exists": "yes"
+  },
+  "comments": "Chosen assumptions: ego makes a scripted right lateral evasion after 2 s at 10-11 m/s toward the rear quarter of agent1, which starts 12-14 m ahead in the target lane at 8-9 m/s. Agent1 responds with continued lane and speed holding. The interaction is with the leading target-lane car, rather than a target-lane follower. Ego initiates; both partners are same-direction cars on one trafficway. Seven-second horizon; no collision is required."
+}

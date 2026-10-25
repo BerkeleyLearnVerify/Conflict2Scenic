@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "lane_change_left"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "lane_change_left",
+      "position": "left_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "yes",
+    "right_lane_exists": "no"
+  },
+  "comments": "Chosen assumptions: ego makes a scripted left lateral evasion after 2 s at 8-9 m/s while agent1 is approximately abreast in the lane to its left, with a longitudinal offset of -1 to 1 m and the same target speed. Agent1 responds after 0.3-0.5 s by escaping into a third lane farther left. Three coexisting same-direction lanes are required, including the lane left of agent1. Ego initiates; agent1 responds. Seven-second horizon; no collision is required."
+}

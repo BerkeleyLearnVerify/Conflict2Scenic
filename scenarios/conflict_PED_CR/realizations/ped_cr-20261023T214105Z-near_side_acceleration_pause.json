@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "accelerating"
+  },
+  "agents": {
+    "agent1": {
+      "type": "pedestrian",
+      "maneuver": "crossing",
+      "position": "right_front_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego is the car initiator and agent1 the pedestrian responder; the pedestrian crosses the trafficway without following another trafficway. Chosen assumptions: an unmarked, straight, two-way crossing; ego approaches at 2.5\u20133 m/s, then accelerates after 1 s. Agent1 starts on the near sidewalk 18\u201320 m ahead, walking left at 1.2\u20131.4 m/s, pauses when ego comes within 15\u201316 m, and resumes after ego recedes beyond 20 m. The car acceleration creates the conflict; pedestrian crossing is already underway. Speeds, locations, response thresholds and the 16 s horizon are assumptions; a collision is not required."
+}

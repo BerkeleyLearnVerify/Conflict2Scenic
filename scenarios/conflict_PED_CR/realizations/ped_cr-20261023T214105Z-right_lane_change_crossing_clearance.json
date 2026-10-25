@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "lane_change_right"
+  },
+  "agents": {
+    "agent1": {
+      "type": "pedestrian",
+      "maneuver": "crossing",
+      "position": "right_front_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "no",
+    "right_lane_exists": "yes"
+  },
+  "comments": "Input facts: ego is the car initiator and agent1 the pedestrian responder; agent1 crosses the same trafficway rather than traveling along another road. Chosen assumptions: a straight road with exactly two same-direction lanes, ego in the inner lane and pedestrian crossing from the right sidewalk 19\u201321 m ahead. After 0.75 s ego changes right at 4.5\u20135 m/s, putting the vehicle into the pedestrian crossing corridor; agent1 responds within 13\u201314 m by increasing speed from 1.2\u20131.4 to 3\u20133.4 m/s. The lane change is the initiating event. Geometry, timing and the 16 s horizon are assumptions; no collision is prescribed."
+}

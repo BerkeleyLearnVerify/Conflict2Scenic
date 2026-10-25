@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "lane_change_left"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "accelerating",
+      "position": "left_front_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "yes",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego and agent1 are cars; ego initiates lateral incursion and agent1 responds; both initially travel in different lanes of the same trafficway. Chosen assumptions: a compact urban two-lane corridor; ego catches a slower car ahead in the left lane and merges left behind it after 0.6 s. Agent1 responds to ego entering its lane within 15 m by applying throttle until separation reaches 20 m, then following its lane at 11-12 m/s to open the gap. Speeds are m/s, distances are m, and times are s. This is a rear-quarter closure rather than a lead cut-in; collision is not required."
+}

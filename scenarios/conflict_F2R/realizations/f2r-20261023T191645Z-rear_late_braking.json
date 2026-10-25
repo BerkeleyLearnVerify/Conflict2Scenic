@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "braking"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "follow_lane",
+      "position": "in_front_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego and agent1 are cars; ego initiates and agent1 responds; both share a travel lane and direction. Chosen assumptions: ego approaches at 11-12 m/s while agent1 maintains 6-7 m/s 26-29 m ahead. Ego creates the conflict by maintaining its faster speed until separation is below 12-14 m, then waiting another 0.5-0.7 s before braking at 0.8-0.95 for 1.2-1.5 s and settling to agent1 speed. Agent1 responds by maintaining a predictable lane and speed. This is a delayed following-distance correction, rather than a throttle surge. The straight corridor and 8 s horizon are assumptions; collision is not required."
+}

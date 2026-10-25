@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "left_turn"
+  },
+  "agents": {
+    "agent1": {
+      "type": "pedestrian",
+      "maneuver": "crossing",
+      "position": "left_front_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "yes",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego is the car initiator and agent1 the pedestrian responder; pedestrian movement is transverse to the outgoing trafficway and does not follow another trafficway. Chosen assumptions: a four-approach junction with single-lane incoming and outgoing roads. Ego starts 6\u20139 m before its incoming-lane end and commits to a left turn at 4.5\u20135 m/s, while agent1 crosses from the far sidewalk 6\u20138 m into the outgoing road at 1.2\u20131.4 m/s. After ego leaves its initial lane and comes within 18\u201319 m, agent1 increases speed to 2.8\u20133.2 m/s to clear the outgoing ego lane. Left-front placement is checked relative to ego initial travel direction. All geometry, timing and the 18 s horizon are chosen assumptions; no marked crosswalk or collision is required."
+}

@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "right_turn"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "left_turn",
+      "position": "oncoming_lane",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "yes",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: the two cars initially use opposing approaches in their legal travel directions; ego is initiator and agent1 responder. Chosen assumptions: ego makes an emergency right diversion at the junction to avoid an abstracted road-surface hazard ahead; no additional actor is introduced. Agent1 already plans a left turn into the same single outgoing lane. Ego approaches at 7-9 m/s and diverts at partner separation 42-45 m; agent1 turns at 5-7 m/s and brakes at 0.7-0.9 after a 0.25-0.45 s reaction when ego is on its right-turn connector and within 13-16 m. Converging turn paths, rather than a through-lane crossing, provide the interaction. Conflict opportunity only."
+}

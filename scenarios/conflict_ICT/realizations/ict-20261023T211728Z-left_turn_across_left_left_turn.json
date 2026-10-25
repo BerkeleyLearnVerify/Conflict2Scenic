@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "left_turn"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "left_turn",
+      "position": "lateral_lane_at_intersection",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "yes",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: intersection-cross-traffic; both partners are cars; ego is the initiator and agent1 the responder; both planned intersection paths cross. Chosen assumptions: four-way junction, lateral approaches, 12-24 m initial approach clearance, nonzero initial speeds equal to trajectory target speeds (m/s), and ego reaching the crossing 0.1-0.45 s before agent1 under constant-speed estimates. The crossing opportunity is intentional; no collision is required. Ego initiates a left turn across the left-turn path of agent1 approaching from the left. Agent1 delays its braking response, yields until ego clears, then completes its turn. Braking is triggered only after ego enters its connecting lane and the partners are within 14-17 m; brake control 0.65-0.85 is held until ego leaves that lane and separation reaches 12 m. The response delay is 0.25-0.45 s."
+}

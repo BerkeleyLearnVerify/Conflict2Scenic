@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "braking"
+  },
+  "agents": {
+    "agent1": {
+      "type": "pedestrian",
+      "maneuver": "standing",
+      "position": "in_front_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego is the car initiator; agent1 is the pedestrian responder; the group permits stationary non-crossing trafficway occupancy. Chosen assumptions: agent1 stands near the lane center, 23-26 m ahead; ego initiates the conflict by advancing at 5-6 m/s toward the occupied lane, then brakes at 9-11 m surface-independent object distance with brake input 0.65-0.85. Agent1 remains stationary throughout. This is a longitudinal closure followed by ego mitigation. Outcome intent: conflict opportunity, with no collision requirement. All realizations use stationary pedestrians because the schema provides no parallel-walking pedestrian maneuver."
+}

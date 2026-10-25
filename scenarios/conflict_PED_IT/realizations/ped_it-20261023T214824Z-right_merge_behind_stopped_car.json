@@ -1,0 +1,26 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "lane_change_right"
+  },
+  "agents": {
+    "agent1": {
+      "type": "pedestrian",
+      "maneuver": "crossing",
+      "position": "right_front_of_ego",
+      "order": 1
+    },
+    "agentStatic": {
+      "type": "car",
+      "maneuver": "stopping",
+      "position": "right_front_of_ego",
+      "order": 2
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "no",
+    "right_lane_exists": "yes"
+  },
+  "comments": "Input facts: ego is the forward-moving car initiator; agent1 is the pedestrian responder; agentStatic is the car responder. Chosen assumptions: the car is stopped in the right driving lane and the pedestrian is behind it at a rear-access position in that lane. Ego establishes forward motion for 1 s, then initiates a right merge into this occupied rear gap. Agent1 responds within 10-11 m by walking 1.1-1.2 m to the right within the same lane, away from the merging path; agentStatic remains stopped. Pedestrian distance 16-17 m, static car 3.8-4 m farther ahead. Ego target speed 3-3.5 m/s; permissive target-lane check 2.5-3 m; late brake threshold 5.5-6.5 m. Walking speed 1.1-1.3 m/s. Intended observation window 8 s; no impact or animated vehicle access is required."
+}

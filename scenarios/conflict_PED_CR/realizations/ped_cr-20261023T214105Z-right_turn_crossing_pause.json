@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "right_turn"
+  },
+  "agents": {
+    "agent1": {
+      "type": "pedestrian",
+      "maneuver": "crossing",
+      "position": "right_front_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "yes",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego is the car initiator and agent1 the pedestrian responder; pedestrian movement is transverse to the outgoing trafficway and does not follow another trafficway. Chosen assumptions: a four-approach junction with single-lane incoming and outgoing roads. Ego starts 6\u20139 m before its incoming-lane end, turns right at 4.5\u20135 m/s without a planned pedestrian yield; agent1 crosses from the right sidewalk 6\u20138 m into the outgoing road at 0.8\u20131 m/s. Once ego commits to the turn and comes within 12\u201313 m, agent1 pauses and resumes after ego is more than 18 m away. Right-front placement is checked relative to ego initial travel direction. All geometry, timing and the 18 s horizon are chosen assumptions; no marked crosswalk or collision is required."
+}

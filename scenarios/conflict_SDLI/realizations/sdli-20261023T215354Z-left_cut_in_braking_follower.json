@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "lane_change_left"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "braking",
+      "position": "left_behind_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "yes",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego and agent1 are cars; ego initiates lateral incursion and agent1 responds; both initially travel in different lanes of the same trafficway. Chosen assumptions: a long two-lane corridor, ego ahead of a faster left-lane car, and a left cut-in after 1 s. Agent1 observes ego enter its lane within 18 m, continues for 0.25 s, then holds its brakes. Speeds are m/s, distances are m, and times are s. The event creates a conflict opportunity without requiring a collision."
+}

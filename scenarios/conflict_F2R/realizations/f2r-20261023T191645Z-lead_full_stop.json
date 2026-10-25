@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "stopping"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "stopping",
+      "position": "behind_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego and agent1 are cars; ego initiates and agent1 responds; both share a travel lane and direction. Chosen assumptions: ego leads at 8-9 m/s with agent1 28-30 m behind at the same speed. After 2 s ego abruptly stops using SetSpeedAction(0) and remains stopped. Agent1 detects separation below 22-24 m, reacts for 0.5-0.7 s, brakes at 0.8-0.95 for 3 s, and remains stopped. This creates a sustained in-lane obstruction, unlike the temporary brake pulse. The straight non-intersection corridor and 8 s horizon are assumptions; collision is not required."
+}

@@ -1,0 +1,26 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "accelerating"
+  },
+  "agents": {
+    "agent1": {
+      "type": "pedestrian",
+      "maneuver": "standing",
+      "position": "in_front_of_ego",
+      "order": 1
+    },
+    "agentStatic": {
+      "type": "car",
+      "maneuver": "stopping",
+      "position": "in_front_of_ego",
+      "order": 2
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego is the forward-moving car initiator; agent1 is the pedestrian responder; agentStatic is the car responder. Chosen assumptions: agentStatic holds stopped in the travel lane, while agent1 stands at its rear handling an implied rear-access task; no door or trunk animation is assumed. Ego establishes forward motion for 1 s, then accelerates toward the occupied gap and brakes late. The pedestrian remains standing and the static car holds position. Pedestrian distance 16-17 m; car center 3.2-3.4 m beyond the pedestrian; approach target 2.5-3 m/s, throttle 0.18-0.23, brake trigger 6-7 m. Intended observation window 8 s. This creates a conflict opportunity without requiring impact."
+}

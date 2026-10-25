@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "lane_change_left"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "follow_lane",
+      "position": "in_front_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "yes",
+    "right_lane_exists": "no"
+  },
+  "comments": "Chosen assumptions: ego approaches a slower car in its own lane at 10-11 m/s, with agent1 17-19 m ahead at 7-8 m/s. At 2 s ego initiates a late left lateral evasion, exposing the source-lane leader to a close rear-quarter interaction during departure. Agent1 holds lane and target speed. The target lane is initially empty. Ego is the initiating car and agent1 the responding car. Seven-second horizon; no collision is required."
+}

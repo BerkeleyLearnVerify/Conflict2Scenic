@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "accelerating"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "braking",
+      "position": "in_front_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego and agent1 are cars; ego initiates and agent1 responds; one non-turning car travels in the intended direction and the other opposite it in the same trafficway. Chosen assumptions: ego starts facing 180 degrees against its lane and initiates forward acceleration at t=0, capped at 3-4 m/s. Agent1 is physically ahead of ego along that reversed heading, 40-45 m away in the same lane, and follows the intended lane direction at 5-6 m/s. Thus its lane-coordinate offset is negative despite its in_front_of_ego position. Agent1 reacts at 28-32 m, continues for 0.2-0.4 s, then brakes continuously at 0.8-1.0. A straight corridor supplies clearance; ego brakes after a six-second motion window. This creates an encounter opportunity, without requiring a collision."
+}

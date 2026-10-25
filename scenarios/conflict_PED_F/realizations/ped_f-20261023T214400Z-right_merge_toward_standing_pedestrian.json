@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "lane_change_right"
+  },
+  "agents": {
+    "agent1": {
+      "type": "pedestrian",
+      "maneuver": "standing",
+      "position": "right_front_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "no",
+    "right_lane_exists": "yes"
+  },
+  "comments": "Input facts: ego is the car initiator; agent1 is the pedestrian responder; the group permits stationary non-crossing trafficway occupancy. Chosen assumptions: agent1 stands at the center of the adjacent same-direction lane to the right, 23-26 m ahead. Ego follows at 3-4 m/s for 1 s, then initiates a right lane change toward the occupied lane when the 5-6 m immediate clearance gate is clear. Ego brakes at 9-11 m with input 0.65-0.85. Agent1 remains stationary; this is an outward merge exposure. Outcome intent: conflict opportunity, with no collision requirement. All realizations use stationary pedestrians because the schema provides no parallel-walking pedestrian maneuver."
+}

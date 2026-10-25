@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "lane_change_left"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "braking",
+      "position": "left_behind_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "yes",
+    "right_lane_exists": "no"
+  },
+  "comments": "Chosen assumptions: ego makes a scripted left lateral evasion after 2 s at 8-9 m/s; agent1 approaches in the target lane from 16-18 m behind at 11-12 m/s and brakes after detecting the incursion, with a 0.3-0.5 s reaction delay. Both are cars travelling in the same direction on one trafficway. Ego is the initiator and agent1 the responder. The perceived hazard motivating the evasion is not a third conflict partner. Seven-second horizon; conflict opportunity, no collision requirement."
+}

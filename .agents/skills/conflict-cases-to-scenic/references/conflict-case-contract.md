@@ -104,11 +104,13 @@ Unless the user specifies another format, store each intermediate realization at
 
 Each realization JSON file contains only one resolved-realization object. Each Scenic file contains only its corresponding complete program, with section titles (see references/examples.md) between logical sections; explanatory comments are optional unless the user forbids them. Never concatenate alternatives into one file or randomly choose the causal recipe inside a single program by default.
 
-Map/model settings are generation configuration, not mandatory conflict-case fields. Use values explicitly supplied by the user. Otherwise, use these defaults:
+Map/model settings are generation configuration, not mandatory conflict-case or resolved-realization fields. Follow [map selection](map-selection.md): honor an explicit map, otherwise choose independently per realization from local maps with matching `.xodr` and `.net.xml` files, restricted by an optional user-supplied `available_maps` list. An omitted list uses all eligible local maps; an empty or incompatible list does not fall back to an unlisted map. Preserve an explicit Scenic model, otherwise use `scenic.simulators.metadrive.model`.
+
+Resolve configuration map paths as specified in the map-selection reference, then calculate the emitted path relative to the Scenic program's directory. For example, when Town05 is selected for a program in `scenarios/conflict_<ID>/scenic/`:
 
 ```scenic
-param map = localPath('../../maps/Town05.xodr')
+param map = localPath('../../../maps/Town05.xodr')
 model scenic.simulators.metadrive.model
 ```
 
-Resolve a user-supplied relative map path as requested. Placeholders are appropriate only in reference templates. Generation ends after producing and reviewing the Scenic text: do not inspect a local Scenic repository, compile or sample the program, or run a simulation.
+The example map is not a default. Include a map-selection rationale in a Scenic comment occupying at most one line unless comments are forbidden, and keep map settings outside the realization JSON. Placeholders are appropriate only in reference templates. Static inspection of the supplied map XML is allowed. Generation ends after producing and reviewing the Scenic text: do not inspect a local Scenic repository, compile or sample the program, or run a simulation.

@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "follow_lane"
+  },
+  "agents": {
+    "agent1": {
+      "type": "pedestrian",
+      "maneuver": "standing",
+      "position": "right_front_of_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego is the car initiator; agent1 is the pedestrian responder; the group permits stationary non-crossing trafficway occupancy. Chosen assumptions: agent1 stands within the driving lane near its right edge, 10-12 m ahead and 1.45-1.65 m right of the centerline. Ego initiates a close parallel pass at 4-5 m/s for 6 s, then brakes with input 0.65-0.85. Require initial lateral body clearance of 0.10-0.35 m; agent1 remains stationary without crossing. Outcome intent: conflict opportunity, with no collision requirement. All realizations use stationary pedestrians because the schema provides no parallel-walking pedestrian maneuver."
+}

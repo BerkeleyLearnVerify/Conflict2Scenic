@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "right_turn"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "braking",
+      "position": "lateral_lane_at_intersection",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "yes",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego is a car and the turning initiator; agent1 is a car and the responder; one actor operates against the intended travel direction. Chosen realization: ego makes a right turn at a four-way junction. Agent1 drives toward the junction in ego's selected exit lane while facing opposite its intended direction. Its lateral_lane_at_intersection position denotes the lateral departure trafficway, specifically the endLane of ego's turn, rather than a legal incoming lane. Agent1's counterflow exists before ego begins turning; ego's turn introduces the shared-path conflict. Assumptions: right-hand traffic, straight single-lane exit, no lane changes, ego starts 6-9 m before the connector at target speed 3-4 m/s, and agent1 starts 8-11 m beyond the connector. Agent1 maintains 1.5-2.5 m/s against lane direction until ego enters its turn and their separation falls below 10-12 m; it then brakes at 0.8-1.0. Ego has an emergency brake at 4-5 m separation. The intended outcome is an encounter with a braking response, without requiring a collision. The left/right approach paths and forward/reverse counterflow mechanisms form four materially distinct combinations; numeric variations are not counted separately."
+}

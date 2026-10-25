@@ -1,0 +1,16 @@
+{
+  "conflict_group": {
+    "title": "intersection-turn-into-path",
+    "property": "Involves interactions that occur as a result of one of the actors moving on to a trafficway via a turning maneuver into the path of another actor that is operating in the trafficway being turned on to."
+  },
+  "conflict_partners": {
+    "ego": {
+      "type": "car",
+      "role": "initiator"
+    },
+    "agent1": {
+      "type": "car",
+      "role": "responder"
+    }
+  }
+}

@@ -17,12 +17,15 @@ Follow the syntax below strictly. Use generally available normal behaviors: `Fol
 
 ## Map and model
 
-Use map/model values supplied by the user. Otherwise, use:
+Choose the map using [map selection](map-selection.md), honoring explicit user choices and matching each realization against the eligible local maps. Preserve the user-supplied model or use `scenic.simulators.metadrive.model`. Map paths must resolve relative to the generated program's directory. For example, a program in `scenarios/conflict_<ID>/scenic/` whose realization matches Town05 uses:
 
 ```scenic
-param map = localPath('../../maps/Town05.xodr')
+# Selected Town05 for same-direction adjacent lanes and roadside sidewalks.
+param map = localPath('../../../maps/Town05.xodr')
 model scenic.simulators.metadrive.model
 ```
+
+This is an example selection, not a fixed default. Recompute the path for other output locations and include the selection rationale in a comment occupying at most one line in the generated Scenic program unless comments are forbidden. A capable map still requires the lane, maneuver, and spatial constraints below; do not assume every location in it satisfies the realization. Source XML IDs in the map-selection reference are inspection aids, not guaranteed Scenic IDs.
 
 ## Constants
 

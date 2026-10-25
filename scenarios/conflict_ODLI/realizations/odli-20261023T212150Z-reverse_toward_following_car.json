@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "reversing"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "braking",
+      "position": "behind_ego",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "no",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego and agent1 are cars; ego initiates and agent1 responds; the cars operate in opposite travel directions in the same trafficway. Chosen assumptions: both face the intended lane direction, with agent1 following 25-30 m behind at 4-5 m/s. Ego is held stopped for one second, then initiates sustained reverse travel against the intended direction, capped at 2-3 m/s. After that one-second preparation, agent1 monitors a 19-22 m gap, delays 0.2-0.4 s, then brakes continuously at 0.8-1.0. The straight lane supports reverse travel without steering; ego brakes at the end of a six-second motion window. This is an opposite-direction encounter caused by reverse travel, with no collision required."
+}

@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "left_turn"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "right_turn",
+      "position": "oncoming_lane",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "yes",
+    "left_lane_exists": "no",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego and agent1 are cars in opposing legal trafficways; ego initiates and agent1 responds. Chosen assumptions: ego makes an emergency left diversion at a four-way junction to avoid an abstracted road-surface hazard ahead, while agent1 has a planned right turn into the same outgoing lane. No additional actor or prior collision is assumed. Ego approaches at 7-9 m/s, starts the diversion at partner separation 42-45 m, and converges with agent1 turning at 5-7 m/s. Agent1 brakes at 0.7-0.9 after a 0.25-0.45 s reaction to ego on the left-turn connector within 13-16 m. This is an evasive shared-exit interaction, not an ordinary left-turn priority case. Conflict opportunity only."
+}

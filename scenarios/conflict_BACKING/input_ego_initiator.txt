@@ -1,0 +1,16 @@
+{
+  "conflict_group": {
+    "title": "backing",
+    "property": "Includes all interactions where at least one road user is moving in reverse."
+  },
+  "conflict_partners": {
+    "ego": {
+      "type": "car",
+      "role": "initiator"
+    },
+    "agent1": {
+      "type": "car | pedestrian",
+      "role": "responder"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "ego": {
+    "type": "car",
+    "maneuver": "right_turn"
+  },
+  "agents": {
+    "agent1": {
+      "type": "car",
+      "maneuver": "lane_change_left",
+      "position": "lateral_lane_at_intersection",
+      "order": 1
+    }
+  },
+  "road": {
+    "intersection": "yes",
+    "left_lane_exists": "yes",
+    "right_lane_exists": "no"
+  },
+  "comments": "Input facts: ego and agent1 are cars; ego initiates by turning onto the trafficway occupied by responder agent1. Chosen assumptions: ego enters the outer lane of a multilane receiving road by turning right. Agent1 approaches straight in that same outer lane, then changes to the same-direction lane on its left after ego enters its path and the target lane is clear. Left-adjacent lanes are required on the initial approaches and receiving road; the actual evasion is gated until agent1 reaches the receiving road. Speeds, initial distances, a nominal entry-time gap, and any response delay are chosen assumptions; no collision outcome is required."
+}
